@@ -9,18 +9,22 @@ void setup(){
    background(33, 127, 33);
    
   
-  for(int i = 0; i < 2; i++) {
+
+ startgame();
+  
+  
+  
+}
+
+void startgame() {
+   for(int i = 0; i < 2; i++) {
     
     Cards card = new Cards();
     card.drawImage(x, 0);
     aces += card.getAces();
     counter += card.getnumber_card();
     x+= 60; 
-  }
- 
-  
-  
-  
+  } 
 }
 
 void draw() {
@@ -61,5 +65,12 @@ if (counter > 21) {
   still_playing = false;
   showResult(counter);
 }
+
+if (key == 'r' && still_playing == false) {
+    background(33, 127, 33);
+    counter = 0;
+    x = 0;
+    startgame();
+    still_playing = true;
     }
-    
+}
