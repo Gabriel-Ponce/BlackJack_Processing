@@ -61,7 +61,7 @@ else if (key == ENTER) {
       showResult(counter);
        
 }
-if (counter > 21) {
+if (counter > 21 && still_playing == true) {
   still_playing = false;
   showResult(counter);
 }
