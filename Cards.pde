@@ -1,10 +1,12 @@
 PImage card;
+
+
 class Cards {
   
   boolean isAce = false;
   private int number_card = (int)random(9)+1;  
     
-  
+ 
   void setImage() {
     
    switch(number_card) {
@@ -59,7 +61,7 @@ class Cards {
    
    
   }
-  
+
   void setManualImage(int number) {
    
    switch(number) {
