@@ -1,36 +1,32 @@
 int aces;
 int counter;
 int x;
-boolean still_playing = true;
+boolean still_playing = false;
+boolean isscreen = true;
+boolean isstart = false;
 String score;
 PFont mono;
+PFont start;
+PImage logo;
+PImage S;
+
+Cards cardexample = new Cards();
+
 void setup(){
+
   size(2080, 1000);
-   background(33, 127, 33);
-   
-  
-
- startgame();
-  
-  
+  startupScreen( logo, cardexample, start); 
   
 }
 
-void startgame() {
-   for(int i = 0; i < 2; i++) {
-    
-    Cards card = new Cards();
-    card.drawImage(x, 0);
-    aces += card.getAces();
-    counter += card.getnumber_card();
-    x+= 60; 
-  } 
-}
+
 
 void draw() {
+   
+checkLose();
   println(counter);
+  
    if (still_playing == true) {
-   fill(0);
    mono = createFont("Arial", 32);
    textFont(mono);
    text("Another card: Space", 0, 500);
@@ -41,36 +37,8 @@ void draw() {
    }
     
   }
-    void keyReleased() {
+void keyReleased() {
   
-  if (key == ' ' && still_playing == true) {
-    Cards card = new Cards();
-    card.drawImage(x, 0);
-    aces += card.getAces();
-    counter += card.getnumber_card();
-    x+= 60; 
-    
-}
-  if (counter > 21 && aces > 0) {
-    
-   counter -= 10; 
-   aces--;
-  }
-else if (key == ENTER) {
-      still_playing = false;
-      showResult(counter);
-       
-}
-if (counter > 21) {
-  still_playing = false;
-  showResult(counter);
-}
+KeyBindings();
 
-if (key == 'r' && still_playing == false) {
-    background(33, 127, 33);
-    counter = 0;
-    x = 0;
-    startgame();
-    still_playing = true;
-    }
 }
